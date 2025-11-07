@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title> advanced function </title>
+</head>
+
+<body>
+    <script>
+        /*
+        // rules:-
+        //functions in js are value so function inside the object behave like value  so we call the object as function.
+        //we can do hoisting means calling function before declaring it.
+        greet();  //hoisting
+        function greet() {
+            console.log('hii');
+        }
+        greet();
+
+        // a function without name called anoynous function.
+        //we can not do hoisting when function store in a object like this.
+        const func = function () {
+            console.log('hello');
+        };
+        console.log(func);
+        console.log(typeof func);
+        func();
+
+        const object1 = {
+            num: 2,
+            fun: function see() {
+                console.log('object fun');
+            }
+        }
+        object1.fun() //calling function inside of object.
+
+
+        //we can pass the function into parameter.
+        function run(param) {
+            param();
+        }
+        //"function passing into another function called callback funtion."
+        run(function () {
+            console.log('runnnn'); //runn
+        })
+*/
+
+        // setTimeout(); its built in function. it takes 2 parmaeter 1.funcion and 2. timr.
+        setTimeout(function () {
+            console.log('ste time out');
+        }, 3000)
+        // time in miliseconds
+        console.log('next line');
+
+        /* js is asyncronous language.
+        asyncronous Code :- means the tasks won't  wait to finish before goinf to the next line.
+        like setTimeout()  its take time to run. 
+        syncronous Code :- will wait for one line to finish before ging to the next line.Code
+          */
+
+        //setinterval is continoue running the code in each 3 second time .
+        setInterval(function () {
+            console.log('interval');
+
+        }, 3000)
+
+        // clearInterval() - use to stop the interval
+
+
+        // ------------arrow function----------
+        const fun = (param) => {
+            console.log(param);
+        };
+        fun(2)
+        const run = p => { console.log('hii'); }
+
+
+        arr = [1, 1, 1, 1];
+        // let newArr = [];
+        const res = arr.map((value, index) => index + 1)
+        console.log('arrrrr', res);
+
+
+        const even = res.filter((v, i) => v % 2 == 0)
+        console.log('even', even);
+
+
+
+    </script>
+</body>
+
+</html>

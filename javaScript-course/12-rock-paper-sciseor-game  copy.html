@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>adding objects in game </title>
+
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-style: arial;
+    }
+
+    h1 {
+      font-style: bold;
+    }
+
+    .moveicon {
+      height: 60px;
+    }
+
+    .move-button {
+      background-color: transparent;
+      border: 3px solid white;
+      width: 120px;
+      height: 120px;
+      border-radius: 60px;
+      cursor: pointer;
+      margin-top: 50px;
+    }
+
+    .reset-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .reset-btn {
+      padding: 15px 15px 15px 15px;
+      font-size: large;
+    }
+
+    .playbtn {
+      padding: 15px 15px 15px 15px;
+      font-size: large;
+    }
+
+    .result {
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 50px;
+    }
+
+    .score {
+      margin-top: 60px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- algoritum:-  -->
+  <!-- 
+    s1- computor randomly select a move.
+    s2-compaire the move to get the result.
+    s3- update score and display on popup.
+    s4- display the result in popup. 
+   -->
+
+  <h1 style="display: flex; justify-content: center; ">Rock Paper Scissor Game</h1>
+
+  <div style="display: flex; gap: 30px; justify-content: center;">
+
+    <button class="move-button" onclick="
+      playGame('Rock');
+    "><img class="moveicon" src="rock-emoji.png"></button>
+
+    <button class="move-button" onclick="
+       playGame('Paper');
+    "><img class="moveicon" src="paper-emoji.png"></button>
+
+    <button class="move-button" onclick="
+      playGame('scissor');
+    "><img class="moveicon" src="scissors-emoji.png">
+    </button>
+
+    <p class="js-result result"></p>
+    <p class="js-moves"></p>
+    <p class="js-score score"></p>
+
+  </div>
+  <div class="reset-button">
+    <button class="reset-btn" onclick="
+    score.wins = 0,
+    score.looses = 0,
+    score.ties = 0
+    localStorage.removeItem('score');
+    ">Reset Score</button>
+
+    <button class="playbtn" onclick="autoPlay()">Auto Play</button>
+  </div>
+
+
+  <script>
+
+    let isAutoPlaying = false;
+
+    function autoPlay() {
+      if (!isAutoPlaying) {
+        let intervalId = setInterval(function () {
+          const playerMove = pickComputerMove();
+          playGame(playerMove);
+        }, 1000)
+        isAutoPlaying = true;
+      } else {
+        clearInterval(intervalId);
+        isAutoPlaying = false;
+      }
+    }
+
+    // let dataa = localStorage.getItem('score'); //through this we get data in json format so we use JSON.parse to convert into object.
+    // console.log('dataaaaa......', dataa);
+
+    let score = JSON.parse(localStorage.getItem('score')) || {
+      wins: 0,
+      losses: 0,
+      ties: 0,
+    };  //get data from localstorage and convert into json to js data.
+    console.log('data....', score);
+
+    //if no data in localstorage it will show NULL fo that we  use this condition if.
+    /*if (score === null) {
+      const score = { // object declare 
+        wins: 0,
+        losses: 0,
+        ties: 0,
+      };
+    }*/
+    // console.log(score); // not showing updates in this console cos its out of function.
+
+    function playGame(playerMove) { //by passing parameter we easy the code.
+
+      const computorMove = pickComputerMove();
+      let result = '';
+
+      if (playerMove === 'scissor') {
+        if (computorMove === 'Rock') {
+          result = 'You lose.';
+        } else if (computorMove === 'Paper') {
+          result = 'You Win.';
+        } else if (computorMove === 'Scissor') {
+          result = 'Tie';
+        }
+
+
+      } else if (playerMove === 'Paper') {
+        if (computorMove === 'Rock') {
+          result = 'You Win.';
+        } else if (computorMove === 'Paper') {
+          result = 'Tie';
+        } else if (computorMove === 'Scissor') {
+          result = 'You lose.';
+        }
+
+      } else if (playerMove === 'Rock') {
+        if (computorMove === 'Rock') {
+          result = 'Tie';
+        } else if (computorMove === 'Paper') {
+          result = 'You lose.';
+        } else if (computorMove === 'Scissor') {
+          result = 'You Win.';
+        }
+      };
+
+      //cullect updated data in object here
+      if (result === 'You Win.') {
+        score.wins = score.wins + 1;
+        console.log('wins', score.wins);
+
+      }
+      else if (result === 'You lose.') {
+        score.losses = score.losses + 1;
+        console.log('wins', score.losses);
+
+      } else if (result === 'Tie') {
+        score.ties = score.ties + 1;
+        console.log('wins', score.ties);
+
+      }
+      console.log('updated score', score);
+
+      //local storage for storing data locally so data keep there on refreshing page.
+      localStorage.setItem('score', JSON.stringify(score));
+
+      // alert(`You selcted ${playerMove}, computer select ${computorMove}, result: ${result} 
+      //   Wins : ${score.wins} , Looses : ${score.losses} , Tie : ${score.ties}`);
+
+
+      updateScoreElement();
+
+      document.querySelector('.js-result').innerHTML = result;
+
+      document.querySelector('.js-moves').innerHTML = `You
+      <img src="images/${playerMove}-emoji.png" class="move-icon">
+      <img src="images/${computerMove}-emoji.png" class="move-icon">
+      Computer`;
+
+
+      function updateScoreElement() {
+        document.querySelector('.js-score')
+          .innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+      }
+
+      function pickComputerMove() {
+        const randomNumber = Math.random();
+
+        let computorMove = '';
+
+        if (randomNumber >= 0 && randomNumber < 1 / 3) {
+          console.log('computer select rock');
+          computorMove = 'Rock';
+        } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+          console.log('computer select paper');
+          computorMove = 'Paper';
+        } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+          console.log('computer select Scissor');
+          computorMove = 'Scissor';
+        }
+        return computorMove; //rturn variable to make it accessible to oput of the function.
+      }
+      pickComputerMove();
+    }
+
+
+  </script>
+</body>
+
+</html>

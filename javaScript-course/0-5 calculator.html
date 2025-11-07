@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>calculator practice</title>
+</head>
+
+<body>
+
+    <button onclick=" console.log(`show cart quantity: ${cartQuantity}`)"> show quantity </button>
+    <button onclick="
+    cartQuantity += 1;
+    console.log(`item is added${cartQuantity}`)
+    "> Add to Cart </button>
+
+    <button onclick="
+        cartQuantity = cartQuantity + 2
+        console.log(`cartQuantity is ${cartQuantity}` 
+        )"> +2 </button>
+
+    <button onclick=" 
+        cartQuantity = cartQuantity+3
+        console.log(`cartQuantity is ${cartQuantity}` 
+        )"> +3 </button>
+
+    <button onclick="
+    cartQuantity = 0;
+    console.log('cart it empty')
+    console.log(`cartQuantity is ${cartQuantity}` )
+    "> Reset Cart </button>
+
+    <br>
+    <br>
+
+    <button onclick="
+      cal1 = cal1 + 1;
+    console.log(`${cal1}`)">1</button>
+    <button onclick="
+     cal2 = cal2 + 2;
+    console.log(`${cal2}`)">2</button>
+    <button onclick="
+     cal3 = cal3 + 3
+    console.log(`${cal3}`)">3</button>
+
+    <button onclick="
+    console.log('+')
+    ">+</button>
+    <button onclick="
+    calculation = cal1 + cal2 + cal3 
+    console.log('output ',calculation) ">=</button>
+
+    <button onclick="calculation = 0; 
+console.log(`${calculation}`)">clear </button>
+
+
+
+    <script>
+
+        let cartQuantity = 0;
+        console.log(cartQuantity)
+
+        let calculation = ''
+        let cal1 = 0;
+        let cal2 = 0;
+        let cal3 = 0;
+        let clear = 0;
+
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>rock paper scisor game </title>
+</head>
+
+<body>
+  <!-- algoritum:-  -->
+  <!-- computor randomly select a move.
+    compaire the move to get the result.
+    display the result in popup. -->
+  <h2 style="display: flex; justify-content: center; ">Game</h2>
+
+  <div style="display: flex; gap: 30px; justify-content: center;">
+
+
+    <!-- // const randomNumber = Math.random();
+    // console.log(randomNumber);
+    // let computorMove = '';
+
+    // computor randomly select a move. whitch is check under condition what move computer select.
+    //cumputer select number from 0 to 1 so we have tp deveide the 0 to 1 into 1/3, 2/3. and use conditional rendering
+    to check condition.
+
+    // if(randomNumber >=0 && randomNumber < 1/3 ){ // console.log('computer select rock'); // computorMove='Rock' ; //
+      } else if(randomNumber>=1/3 && randomNumber < 2/3){ // console.log('computer select paper'); //
+        computorMove='Paper' ; // }else if(randomNumber>=2/3 && randomNumber < 1){ // console.log('computer select
+          Scissor'); // computorMove='Scissor' ; // } // compaire the move to get the result. // display the result in
+          popup. -->
+
+    <button onclick="
+      playGame('Rock');
+    ">Rock</button>
+
+    <button onclick="
+       playGame('Paper');
+    ">Paper</button>
+
+    <button onclick="
+      playGame('scissor');
+    ">Scissor
+    </button>
+  </div>
+
+  <!-- <h2>Game 2 Flip a coin</h2>
+
+    <button onclick="
+    
+        let flip = Math.random();
+
+        let result = '';
+
+        if (flip < 0.5) {
+            console.log('head.....');
+            result = 'head';
+        } else if (flip > 0.5) {
+            console.log('tail..');
+            result = 'tail';
+        }
+
+        //guess the flip
+        let guess = 'head';
+        guess === result ? console.log('you win') : console.log('you lose'); 
+
+
+    "> Flip a coin </button> -->
+
+  <script>
+
+    function playGame(playerMove) { //by passing parameter we easy the code.
+
+      const computorMove = pickComputerMove();
+      let result = '';
+
+      if (playerMove === 'scissor') {
+        if (computorMove === 'Rock') {
+          result = 'You lose.';
+        } else if (computorMove === 'Paper') {
+          result = 'You Win';
+        } else if (computorMove === 'Scissor') {
+          result = 'Tie';
+        }
+        alert(`You selcted ${playerMove}, computer select ${computorMove}, result: ${result}`);
+
+      } else if (playerMove === 'Paper') {
+        if (computorMove === 'Rock') {
+          result = 'You Win.';
+        } else if (computorMove === 'Paper') {
+          result = 'Tie';
+        } else if (computorMove === 'Scissor') {
+          result = 'You lose';
+        }
+
+        alert(`You selcted ${playerMove}, computer select ${computorMove}, result: ${result}`);
+
+      } else if (playerMove === 'Rock') {
+        if (computorMove === 'Rock') {
+          result = 'Tie';
+        } else if (computorMove === 'Paper') {
+          result = 'You lose';
+        } else if (computorMove === 'Scissor') {
+          result = 'You Win';
+        }
+        alert(`You selcted ${playerMove}, computer select ${computorMove}, result: ${result}`);
+
+      };
+
+      function pickComputerMove() {
+        const randomNumber = Math.random();
+
+        let computorMove = '';
+
+        if (randomNumber >= 0 && randomNumber < 1 / 3) {
+          console.log('computer select rock');
+          computorMove = 'Rock';
+        } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+          console.log('computer select paper');
+          computorMove = 'Paper';
+        } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+          console.log('computer select Scissor');
+          computorMove = 'Scissor';
+        }
+        return computorMove; //rturn variable to make it accessible to oput of the function.
+      }
+      pickComputerMove();
+    }
+    // function variable() {
+    //     let a = 1;
+    //     console.log(a);
+    //     let a = 4; //we cant redeclare useing let
+    // }
+    // variable();
+    // let a = 5;
+    // console.log(a);
+
+  </script>
+</body>
+
+</html>

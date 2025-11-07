@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>object </title>
+</head>
+
+<body>
+
+
+    <script>
+        const object = {
+            name: 'shubh',
+            age: 25,
+        }
+        // console.log(object);
+        // console.log(object.name);
+
+        object.newproperty = 'bike' // add new prop
+        object.name = 'mit' //change name
+        // console.log(object);
+
+        delete object.newproperty; //delete property
+        // console.log(object);
+
+        // local storage 
+        // localstorage.setItem();
+        // localstorage.getItem();
+        // and other methods
+
+
+        const object1 = {
+            name: 'shubh',
+            age: 201,
+        }
+
+        const object2 = object1;
+        console.log(object2.name); //shubh;
+
+        let object3 = object1.name = "ron"; //update the value of property in object even object is const.
+        console.log(object2); //shubh;
+
+        // distructure the object
+        const { name, age } = object2;
+        console.log(name);
+        console.log(age);
+
+        //sorthand property mean u can use property of already declare object and use into new object .
+        const object4 = {
+            name: name, // ron
+
+            // method: function func() {    old way to write code.
+            //     console.log('hi there');  
+            // }
+
+            method() {  //called sorthand method. sort form to write code.
+                console.log('hi method');
+
+            }
+        }
+        console.log(object4);
+        object4.method()
+
+
+        const f1 = {
+            car: 'formula one',
+            driver: 'luis hamilton',
+            age: 25,
+
+            raceTrack() {
+                console.log('abu dabi grand prix');
+
+            }
+        }
+        console.log(f1.car);
+        f1.raceTrack()
+
+
+        // practice exercise
+        amezoneProduct = {
+            name: 'basketball',
+            price: 250,
+        }
+
+        amezoneProduct.price = 500
+        console.log(amezoneProduct);
+
+        amezoneProduct["delivary-time"] = '3-days';
+        console.log(amezoneProduct);
+
+        // p2
+        function compairPrice(product1, product2) {
+            if (product1.price < product2.price) {
+                return product1;
+
+            } else {
+                return product2;
+            }
+        };
+        product1 = {
+            name: 'iphone',
+            price: 30000
+        }
+        product2 = {
+            name: 'pixel',
+            price: 50000
+        };
+        let compair = compairPrice(product1, product2);
+        console.log("less price product", compair);
+
+        // p3
+        function isSameProduct(p1, p2) {
+            if (p1.name || p1.price == p2.name || p2.price) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        product1 = { name: 'watch', price: 5000 }
+        product2 = { name: 'watch', price: 5000 }
+        let same = isSameProduct(product1, product2);
+        console.log(same);
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>DOM </title>
+</head>
+
+<body>
+
+    <button>hello</button>
+    <script>
+
+        console.log(document.querySelector('button').innerHTML);
+        document.querySelector('button').innerHTML = 'changeed';
+
+        "document object represent the model / webpage "
+        "dom is a buil in object, works the same way as other objects "
+        "the dom combines javascript and html togeather and its give js control of the webpage."
+
+        document.body.innerHTML = 'hello';
+        console.log(document);
+        console.log(document.title);
+
+        document.title = ' documet object module'
+        console.log(document.title);
+
+        console.log(typeof document);
+        console.log(typeof document.body);
+        console.log(document.body);
+
+        "innerHTMl control the all html in the body."
+        console.log(document.body.innerHTML); // gives all html
+        document.body.innerHTML = "changed"; // change the body text n display on body
+
+        document.body.innerHTML = '<button> join me </button>' //create button
+
+        console.log(document.queriselector('body'));
+
+
+
+    </script>
+</body>
+
+</html>
